@@ -2,7 +2,6 @@ import tensorflow as tf
 import keras
 from keras import layers, Model
 
-
 @keras.saving.register_keras_serializable()
 class Sampling(layers.Layer):
     def call(self, inputs):

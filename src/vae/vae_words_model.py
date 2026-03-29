@@ -2,7 +2,7 @@ import tensorflow as tf
 import keras
 from keras import layers, Model
 import numpy as np
-from vae_model import Sampling  # reuse the Sampling reparameterisation layer
+from vae.vae_model import Sampling  # reuse the Sampling reparameterisation layer
 
 MAX_LEN = 12
 VOCAB = "abcdefghijklmnopqrstuvwxyz "  # 26 letters + space used as padding

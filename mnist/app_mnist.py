@@ -2,7 +2,7 @@ import numpy as np
 import streamlit as st
 import keras
 import matplotlib.pyplot as plt
-from vae_model import VAE
+from vae.vae_model import VAE
 
 st.set_page_config(page_title="VAE Latent Space Explorer", layout="centered")
 st.title("VAE Latent Space Explorer")

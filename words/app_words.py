@@ -1,7 +1,7 @@
 import numpy as np
 import streamlit as st
 import keras
-from vae_words_model import WordVAE, decode_output
+from vae.vae_words_model import WordVAE, decode_output
 
 st.set_page_config(page_title="Word VAE – Name Generator", layout="centered")
 st.title("Word VAE – Plausible Name Generator")
@@ -79,7 +79,7 @@ st.markdown(f"<h1 style='text-align:center; letter-spacing:0.15em'>{word or '(em
 # Per-character probability bars
 st.markdown("### Character probabilities")
 import pandas as pd
-from vae_words_model import VOCAB, MAX_LEN, VOCAB_SIZE
+from src.vae.vae_words_model import VOCAB, MAX_LEN, VOCAB_SIZE
 
 rows = []
 for pos in range(MAX_LEN):
