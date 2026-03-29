@@ -215,8 +215,5 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-# Juptext
-*.ipynb
-
 # Saved models
 *.keras

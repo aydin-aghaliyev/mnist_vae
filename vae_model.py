@@ -45,7 +45,7 @@ class VAE(Model):
         return config
 
     @classmethod
-    def from_config(cls, config):
+    def from_config(cls, config, custom_objects=None):
         return cls(
             latent_dim=config.get("latent_dim", 8),
             input_dim=config.get("input_dim", 784),
