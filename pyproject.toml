@@ -1,0 +1,7 @@
+[project]
+name = "mnist-vae"
+version = "0.1.0"
+requires-python = ">=3.10"
+
+[tool.jupytext]
+formats = "ipynb,py:light"
