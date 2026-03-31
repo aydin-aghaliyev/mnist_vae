@@ -1,7 +1,8 @@
 import numpy as np
 import streamlit as st
 import keras
-from vae.vae_words_model import WordVAE, decode_output
+import pandas as pd
+from vae.vae_words_model import WordVAE, decode_output, VOCAB, MAX_LEN, VOCAB_SIZE
 
 st.set_page_config(page_title="Word VAE – Name Generator", layout="centered")
 st.title("Word VAE – Plausible Name Generator")
@@ -10,7 +11,7 @@ st.write(
     "and generate plausible-looking English words."
 )
 
-MODEL_PATH = "vae_words.keras"
+MODEL_PATH = "../Data/vae_words.keras"
 
 
 @st.cache_resource
@@ -45,7 +46,7 @@ st.sidebar.header(f"Latent Vector ({latent_dim}D)")
 col1, col2 = st.sidebar.columns(2)
 
 if col1.button("Randomize"):
-    vals = np.random.normal(0, 1.5, size=latent_dim)
+    vals = np.random.uniform(-1, 1, size=latent_dim)
     for i in range(latent_dim):
         st.session_state[f"wz_{i}"] = float(round(vals[i], 2))
 
@@ -78,9 +79,6 @@ st.markdown(f"<h1 style='text-align:center; letter-spacing:0.15em'>{word or '(em
 
 # Per-character probability bars
 st.markdown("### Character probabilities")
-import pandas as pd
-from src.vae.vae_words_model import VOCAB, MAX_LEN, VOCAB_SIZE
-
 rows = []
 for pos in range(MAX_LEN):
     probs = output[pos]

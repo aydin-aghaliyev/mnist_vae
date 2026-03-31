@@ -10,7 +10,7 @@ st.write("Adjust the 8 latent dimensions and see the decoded image.")
 
 @st.cache_resource
 def load_vae():
-    return keras.models.load_model("vae.keras")
+    return keras.models.load_model("../Data/vae.keras")
 
 vae = load_vae()
 decoder = vae.decoder
