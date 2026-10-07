@@ -57,9 +57,10 @@ class VAE(Model):
     def _compute_losses(self, data):
         z_mean, z_log_var, z = self.encoder(data)
         reconstruction = self.decoder(z)
+        # Per-pixel BCE, summed over pixels, averaged over the batch
         reconstruction_loss = tf.reduce_mean(
             tf.reduce_sum(
-                tf.keras.losses.binary_crossentropy(data, reconstruction), axis=-1
+                keras.ops.binary_crossentropy(data, reconstruction), axis=-1
             )
         )
         kl_loss = -0.5 * (1 + z_log_var - tf.square(z_mean) - tf.exp(z_log_var))
